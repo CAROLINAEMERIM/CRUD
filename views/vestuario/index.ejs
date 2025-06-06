@@ -1,0 +1,31 @@
+<!-- filepath: c:\Users\carol\Downloads\DESENVOLVIMENTO WEB III\CRUD\views\vestuario\index.ejs -->
+<h1>Lista de Vestuários</h1>
+<a href="/vestuario/new" class="btn btn-primary">Novo Vestuário</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data de Criação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% vestuarios.forEach(vestuario => { %>
+            <tr>
+                <td><%= vestuario.id %></td>
+                <td><%= vestuario.nome %></td>
+                <td><%= vestuario.descricao %></td>
+                <td><%= vestuario.data_criacao %></td>
+                <td>
+                    <a href="/vestuario/<%= vestuario.id %>" class="btn btn-primary">View</a>
+                    <a href="/vestuario/<%= vestuario.id %>/edit" class="btn btn-warning">Edit</a>
+                    <form action="/vestuario/<%= vestuario.id %>?_method=DELETE" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
